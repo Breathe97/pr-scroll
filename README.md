@@ -1,18 +1,66 @@
-# Vue 3 + TypeScript + Vite
+# 基于 vue3 封装的一个滚动列表，支持鼠标移入暂停、滚轮滚动。
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 使用方法
 
-## Recommended IDE Setup
+#### 按需引入
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```js
+import { PrScroll } from 'pr-scroll'
+import { ref } from 'vue'
 
-## Type Support For `.vue` Imports in TS
+const list = ref([
+  { id: 1, name: '小明1', age: 18, height: '200px', bg: 'rgb(201, 106, 17)' },
+  { id: 2, name: '小王2', age: 18, height: '220px', bg: '#0097ff' },
+  { id: 3, name: '小王3', age: 18, height: '439px', bg: 'green' },
+  { id: 4, name: '小王4', age: 18, height: '206px', bg: 'rgb(24, 60, 107)' },
+  { id: 5, name: '小王5', age: 18, height: '186px', bg: 'rgb(24, 160, 107)' },
+  { id: 6, name: '小王6', age: 18, height: '296px', bg: 'rgb(24, 201, 107)' },
+  { id: 7, name: '小王7', age: 18, height: '200px', bg: 'rgb(1, 106, 17)' },
+  { id: 8, name: '小王8', age: 18, height: '300px', bg: 'rgb(21, 206, 117)' }
+])
+```
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```html
+<div class="list">
+  <PrScroll :list="list" :interval="4">
+    <template #item="item">
+      <div class="item" :style="[{ height: item.height }]">
+        <div class="item-content" :style="[{ 'background-color': item.bg }]" @click="select(item)">{{ item.name }}</div>
+      </div>
+    </template>
+  </PrScroll>
+</div>
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+```css
+.list {
+  padding: 4px 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 500px;
+  height: 700px;
+  border: 1px solid;
+  overflow: hidden;
+}
+.item {
+  padding: 4px 0;
+  box-sizing: border-box;
+  height: 200px;
+}
+.item-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(24, 60, 107);
+}
+```
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 代码仓库
+
+[github](https://github.com/breathe97/pr-interval-queue)
+
+## 贡献
+
+breathe
