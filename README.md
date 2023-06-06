@@ -4,6 +4,13 @@
 
 ## 使用方法
 
+#### 全局引入
+
+```js
+import PrScroll from 'pr-scroll'
+app.use(PrScroll)
+```
+
 #### 按需引入
 
 ```js
