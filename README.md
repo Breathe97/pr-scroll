@@ -1,6 +1,7 @@
 # 基于 vue3 封装的一个滚动列表，支持鼠标移入暂停、滚轮滚动。
 
 [在线预览](https://pryun.vip/pr-scroll/)
+
 ## 使用方法
 
 #### 按需引入
@@ -26,7 +27,7 @@ const list = ref([
   <PrScroll :list="list" :interval="4">
     <template #item="item">
       <div class="item" :style="[{ height: item.height }]">
-        <div class="item-content" :style="[{ 'background-color': item.bg }]" @click="select(item)">{{ item.name }}</div>
+        <div class="item-content" :style="[{ 'background-color': item.bg }]">{{ item.name }}</div>
       </div>
     </template>
   </PrScroll>
