@@ -60,7 +60,7 @@ const list = ref([
 
 ## 代码仓库
 
-[github](https://github.com/breathe97/pr-interval-queue)
+[github](https://github.com/breathe97/pr-scroll)
 
 ## 贡献
 
