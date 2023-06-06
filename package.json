@@ -1,6 +1,6 @@
 {
   "name": "pr-scroll",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "基于vue3 封装的一个滚动列表，支持鼠标移入暂停、滚轮滚动。",
   "type": "module",
   "main": "./src/components/PrScroll/index.js",
