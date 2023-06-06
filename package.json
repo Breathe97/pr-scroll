@@ -1,11 +1,32 @@
 {
-  "name": "pr-scroll-vue3",
-  "version": "1.0.0",
+  "name": "pr-scroll",
+  "version": "1.0.5",
   "description": "基于vue3 封装的一个滚动列表，支持鼠标移入暂停、滚轮滚动。",
-  "main": "index.js",
+  "private": false,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
   },
-  "author": "Breathe",
-  "license": "ISC"
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/pr-scroll.umd.js",
+  "module": "./dist/pr-scroll.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/pr-scroll.es.js",
+      "require": "./dist/pr-scroll.umd.js"
+    }
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "vue-tsc": "^1.4.2"
+  }
 }
