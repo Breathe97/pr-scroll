@@ -4,23 +4,28 @@ import type { Ref } from 'vue'
 const props = defineProps({
   list: {
     type: [Array],
-    default: () => [],
+    default: () => []
   },
   // 每次滚动间隔时间
   interval: {
     type: [Number],
-    default: () => 8,
+    default: () => 8
   },
   // 每次滚动间隔距离
   gap: {
     type: [String],
-    default: () => '1px',
+    default: () => '1px'
   },
   // 开始滚动时的偏移值 比如你想从第二个item开始滚动
   offSet: {
     type: [Number],
-    default: () => 0,
+    default: () => 0
   },
+  // 自动开始 为false不会自动滚动 需要手动调用ref.play
+  autoStart: {
+    type: [Boolean],
+    default: () => true
+  }
 })
 
 const prScrollRef: Ref = ref()
@@ -40,7 +45,7 @@ const options = ref({
   gap_auto_index: 0, // 自动间隔时 滚动的起点index 与
   interval: props.interval,
   height: 0, // 父级容器高度
-  contentHeight: 0, // 滚动面板高度
+  contentHeight: 0 // 滚动面板高度
 })
 
 const overflow = ref(false) // 默认没有超出不需要滚动
@@ -80,7 +85,7 @@ const isReset = async (offSet = _offSet.value) => {
   }
 }
 
-const autoPlay = async () => {
+const play = async () => {
   await nextTick()
   if (overflow.value === false) return
   const { gap_num, interval } = options.value
@@ -140,15 +145,17 @@ const Style_content = computed(() => {
   return style
 })
 
+defineExpose({ play })
+
 // 数据发送变化时需要重新 initOptions
 watch(
   () => props.list,
   async () => {
     await initOptions()
-    autoPlay()
+    play()
   },
   {
-    immediate: true,
+    immediate: true
   }
 )
 
