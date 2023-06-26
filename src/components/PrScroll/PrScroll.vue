@@ -152,7 +152,9 @@ watch(
   () => props.list,
   async () => {
     await initOptions()
-    play()
+    if (props.autoStart) {
+      play()
+    }
   },
   {
     immediate: true
