@@ -3,6 +3,7 @@
 [在线预览](https://pryun.vip/pr-scroll/)
 
 #### 安装
+
 ```bash
 npm i pr-scroll
 ```
