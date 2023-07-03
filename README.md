@@ -2,7 +2,10 @@
 
 [在线预览](https://pryun.vip/pr-scroll/)
 
-## 使用方法
+#### 安装
+```bash
+npm i pr-scroll
+```
 
 #### 全局引入
 
